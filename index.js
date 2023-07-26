@@ -86,8 +86,10 @@ app.get('/api/list', (req, res) => {
     imageName,
     fakeImageUrl,
   }));
-
-  res.json(imageDataList);
+const response = {
+  data: imageDataList
+}
+  res.json(response);
 });
 
 
