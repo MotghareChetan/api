@@ -1,10 +1,7 @@
-const dotenv = require('dotenv');
 const express = require('express');
 const multer = require('multer');
-const { rembg } = require('@remove-background-ai/rembg.js');
-const path = require('path');
 const bodyParser = require('body-parser');
-dotenv.config();
+
 
 
 
@@ -25,20 +22,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 const uploadedImages = {};
-const usedImageIds = new Set(); 
-
-function generateUniqueImageId() {
-  const random = Math.floor(Math.random() * 100); 
-  const imageId = random < 10 ? `0${random}` : `${random}`;
-  console.log(imageId)
- if (usedImageIds.has(imageId)) {
-     return generateUniqueImageId();
-  }
-  usedImageIds.add(imageId);
-  return imageId;
-}
-
-
 
 function generateRandomSingleDigit() {
   return Math.floor(Math.random() * 100);
