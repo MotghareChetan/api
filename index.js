@@ -64,7 +64,7 @@ app.post('/image', upload.single('image'), (req, res) => {
 })
 
 
-app.get('/api/list', (req, res) => {
+/*app.get('/api/list', (req, res) => {
   const imageDataList = Object.values(uploadedImages).map(({ imageId, imageName, fakeImageUrl }) => ({
     imageId,
     imageName,
@@ -79,6 +79,15 @@ app.get('/api/list', (req, res) => {
 
   console.log("list");
   res.send(response);
+});*/
+app.get('/api/list', (req, res) => {
+  const imageDataList = Object.values(uploadedImages).map(({ imageId, imageName, fakeImageUrl }) => ({
+    imageId,
+    imageName,
+    fakeImageUrl,
+  }));
+
+  res.json(imageDataList);
 });
 
 
