@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const bodyParser = require('body-parser');
+const fs = require('fs')
 const app = express();
 
 const storage = multer.diskStorage({
@@ -48,6 +49,17 @@ app.post('/image', upload.single('image'), (req, res) => {
 
   console.log(response);
   res.send(response);
+
+  // Remove the uploaded file from the server after sending the response
+  const filePath = `./uploads/${receivedImageName}`;
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error('Error deleting file:', err);
+    } else {
+      console.log('File deleted successfully:', filePath);
+    }
+  });
+
 })
 
 
