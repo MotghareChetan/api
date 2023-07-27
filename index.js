@@ -37,7 +37,7 @@ app.post('/image', upload.single('image'), (req, res) => {
   uploadedImages[uniqueImageId] = {
     imageId: uniqueImageId,
     imageName: `Image_${uniqueImageId}.png`,
-    fakeImageUrl: `https://example.com/${receivedImageName}`,
+    fakeImageUrl: `https://picsum.photos/200`,
   };
 
   // Create the response object with dynamic information
